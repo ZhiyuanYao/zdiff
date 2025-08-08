@@ -1,0 +1,97 @@
+#==============================
+# Operating System Files
+#==============================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+Icon?
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Universal Thumbnail Files
+._*
+
+
+#==============================
+# IDEs and Editors
+#==============================
+
+# VS Code
+.vscode/
+.history/
+
+# JetBrains IDEs (IntelliJ, PyCharm, WebStorm, etc.)
+.idea/
+
+# Vim
+*.swp
+*.swo
+*.swn
+Session.vim
+
+# Emacs
+*~
+#*#
+.#*
+
+
+#==============================
+# Development Artifacts
+#==============================
+
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+*.log
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+
+# Testing & Coverage
+.cache/
+.tox/
+.coverage
+*.cover
+coverage.xml
+nosetests.xml
+test-results/
+
+# Type Checkers
+.mypy_cache/
+.pyright/
+
+# Compiled C extensions (often built locally)
+*.pyd
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+#==============================
+# General
+#==============================
+# Backup and Temporary Files
+*.tmp
+*.temp
+*.swp
