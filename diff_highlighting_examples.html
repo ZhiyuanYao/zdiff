@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>zdiff Highlighting Examples</title>
+  <style>
+    body { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; margin: 16px; background: #f4f7fb; color: #1f2937; }
+    h1 { font-size: 18px; margin: 0 0 12px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 6px 0; }
+    .line { padding: 6px 8px; border-radius: 6px; background: #fff; border: 1px solid #d6deea; white-space: pre; overflow-x: auto; }
+    .del-line { background: #5f7e9d; color: #fff; }
+    .add-line { background: #6b8b72; color: #fff; }
+    .del { background: #4a6a89; color: #fff; padding: 0 2px; border-radius: 3px; }
+    .add { background: #2f7f5a; color: #fff; padding: 0 2px; border-radius: 3px; }
+    .ws { background: #6d1f1f; color: #fff; padding: 0 2px; border-radius: 3px; }
+    .hdr { font-weight: 700; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <h1>zdiff: final highlighting result examples</h1>
+  <div class="hdr">Side-by-side styled examples</div>
+  <div class="row"><div class="line">   1  Keep this line.</div><div class="line">   1  Keep this line.</div></div>
+  <div class="row"><div class="line del-line">   2 -Mod: <span class="del">speed</span></div><div class="line add-line">   2 +Mod: <span class="add">distance</span></div></div>
+  <div class="row"><div class="line del-line">   3 -remove <span class="del">this</span> marker now</div><div class="line add-line">   3 +remove marker now</div></div>
+  <div class="row"><div class="line del-line">   4 -route=/api/<span class="del">v1</span></div><div class="line add-line">   4 +route=/api/<span class="add">v2?sort=desc</span></div></div>
+  <div class="row"><div class="line del-line">   5 -alpha <span class="del">beta</span> gamma <span class="del">zeta</span></div><div class="line add-line">   5 +alpha gamma <span class="add">extra</span> eta <span class="add">iota</span></div></div>
+  <div class="row"><div class="line del-line">   6 -Line delete only: remove me.</div><div class="line">      </div></div>
+  <div class="row"><div class="line">      </div><div class="line add-line">   6 +Line insert only: add me.</div></div>
+  <div class="row"><div class="line del-line">   7 -key=[SP SP<span class="ws"> SP</span>]</div><div class="line add-line">   7 +key=[SP SP]</div></div>
+  <div class="row"><div class="line del-line">   8 -status=<span class="del">old</span>, stage-<span class="del">A</span></div><div class="line add-line">   8 +status=<span class="add">new</span>, stage-<span class="add">B</span></div></div>
+  <div class="row"><div class="line del-line">   9 -Long line ... tail-<span class="del">old</span>...</div><div class="line add-line">   9 +Long line ... tail-<span class="add">new</span>...</div></div>
+  <div class="hdr">Non-rendered special outcomes</div>
+  <div class="line">No textual changes: "No changes detected"</div>
+  <div class="line">EOF-only difference: explicit EOF newline difference block</div>
+  <div class="line">--no-color mode: same diff lines and markers, no ANSI colors</div>
+</body>
+</html>

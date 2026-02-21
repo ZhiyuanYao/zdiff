@@ -119,23 +119,27 @@ options:
 
 ## 📏 Diff Highlighting Rules (Final Output)
 
-- `Unchanged line`: no line background and no inline highlight in either mode.
-- `Changed line (single-column)`: old line is printed with `-`, new line with `+`, and only changed spans get inline highlight.
-- `Changed line (side-by-side -s)`: left panel is file1 and right panel is file2, both with line numbers and inline changed-span highlight.
-- `Word-level scope`: unchanged words inside a changed line stay unhighlighted.
-- `Replace case`: replaced words are highlighted on both sides.
-- `Insert-in-line case`: inserted words are highlighted only on the new/right side.
-- `Delete-in-line case`: deleted words are highlighted only on the old/left side.
-- `Mixed edit case`: inserted, deleted, and replaced spans can appear together, each highlighted only where they exist.
-- `Pure line deletion`: the deleted line is shown only on old/left with deletion styling and no mirrored content on new/right.
-- `Pure line insertion`: the inserted line is shown only on new/right with insertion styling and no mirrored content on old/left.
-- `Whitespace-only change`: changed spaces/tabs get a dedicated space-diff background (red-toned for old, green-toned for new).
-- `Unicode/emoji/punctuation`: highlighted exactly like other text, with only changed spans marked.
-- `Long lines`: each panel is width-fitted and may end with `...`, while highlight boundaries stay consistent before clipping.
-- `Context around hunks`: nearby unchanged lines are shown as plain context.
-- `No textual changes`: output shows `No changes detected`.
-- `EOF-newline-only difference`: output shows an explicit EOF newline difference block instead of inline word highlights.
-- `--no-color mode`: same diff structure and markers are shown, but all ANSI highlighting is removed.
+One-line concrete examples (`file1 => file2`):
+
+- `Unchanged line`: `Keep this line.` => `Keep this line.` (no highlight on either side).
+- `Changed line (single-column)`: `- Mod: speed` => `+ Mod: distance` (only changed tokens are highlighted).
+- `Changed line (side-by-side -s)`: `L: -Mod: speed || R: +Mod: distance` (same changed-token highlight in both panels).
+- `Word-level scope`: `alpha beta gamma` => `alpha delta gamma` (only `beta`/`delta` highlighted, not neighbors).
+- `Replace case`: `status=old` => `status=new` (old token highlighted left, new token highlighted right).
+- `Insert-in-line case`: `route=/api/v1` => `route=/api/v2?sort=desc` (inserted part highlighted on right only).
+- `Delete-in-line case`: `remove this marker now` => `remove marker now` (deleted part highlighted on left only).
+- `Mixed edit case`: `A beta C zeta` => `A extra C iota` (delete+insert spans highlighted where they exist).
+- `Pure line deletion`: `Line delete only: remove me.` => `<no line>` (full deleted line shown on left only).
+- `Pure line insertion`: `<no line>` => `Line insert only: add me.` (full inserted line shown on right only).
+- `Whitespace-only change`: `key=[␠␠␠]` => `key=[␠␠]` (space-only segment gets whitespace highlight color).
+- `Unicode/emoji/punctuation`: `版本=甲, stage-A 🙂` => `版本=乙, stage-B 🙂` (only changed spans highlighted).
+- `Long lines`: `long ... old-tail` => `long ... new-tail` (line may clip with `...`, highlight stays on changed part).
+- `Context around hunks`: `Context A` => `Context A` (shown as plain context without highlight).
+- `No textual changes`: `same file` => `same file` (prints `No changes detected`).
+- `EOF-newline-only difference`: `tail<no trailing newline>` => `tail<trailing newline>` (prints EOF newline difference block).
+- `--no-color mode`: `python zdiff.py --no-color old new` => same text/markers with all ANSI colors removed.
+
+Visual preview page: `diff_highlighting_examples.html`
 
 ## 🔧 Advanced Features
 
