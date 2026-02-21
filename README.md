@@ -19,72 +19,26 @@ A professional diff tool that provides git-style output with intelligent block-l
 - **🪟 Side-by-side mode** - Compare file1 (left) and file2 (right) with line numbers in both panels
 - **✅ Standard exit codes** - Proper exit codes for scripting integration
 
-## 🚀 Installation
+## 🚀 Quick Start
 
-### Prerequisites
-
-- Python 3.6 or higher
-- No additional dependencies required (uses only standard library)
-
-### Quick Install
+Requirements: Python 3.6+ and no extra dependencies.
 
 ```bash
-# Clone or download zdiff.py
-wget https://raw.githubusercontent.com/example/zdiff/main/zdiff.py
-chmod +x zdiff.py
-
-# Or clone the repository
-git clone https://github.com/example/zdiff.git
-cd zdiff
-chmod +x zdiff.py
-```
-
-## 📖 Usage
-
-### Basic Usage
-
-```bash
-# Compare two files
+# from repo root
 python zdiff.py file1.txt file2.txt
+python zdiff.py -s file1.txt file2.txt
+python zdiff.py -c 5 file1.txt file2.txt
+python zdiff.py --help
 
-# Make executable and use directly
+# optional executable mode
+chmod +x zdiff.py
 ./zdiff.py file1.txt file2.txt
 ```
 
-### Command Line Options
+CLI synopsis:
 
-```bash
-# Show help
-python zdiff.py --help
-
-# Custom context lines (default: 3)
-python zdiff.py --context 5 file1.txt file2.txt
-python zdiff.py -c 5 file1.txt file2.txt
-
-# Side-by-side layout (left: file1, right: file2)
-python zdiff.py --side-by-side file1.txt file2.txt
-python zdiff.py -s file1.txt file2.txt
-```
-
-### Full Command Reference
-
-```
+```text
 usage: zdiff.py [-h] [--context CONTEXT] [--side-by-side] file1 file2
-
-zdiff - Advanced Text Diff Tool with Git-Style Output
-
-Features intelligent block-level highlighting, consecutive word merging,
-and professional formatting optimized for code and text comparison.
-
-positional arguments:
-  file1                 First file to compare
-  file2                 Second file to compare
-
-options:
-  -h, --help            show this help message and exit
-  --context CONTEXT, -c CONTEXT
-                        Number of context lines to show (default: 3)
-  --side-by-side, -s    Show diff in side-by-side panels with line numbers
 ```
 
 ## 🎨 Output Examples
