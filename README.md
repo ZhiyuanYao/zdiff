@@ -45,46 +45,6 @@ usage: zdiff.py [-h] [--context CONTEXT] [--side-by-side] file1 file2
 
 ### Standard Diff Output
 
-The repository includes a concrete fixture pair that collects the one-line examples:
-
-```txt
-# file1.txt
-Case 01 unchanged: Keep this line.
-Case 02 replace: status=old
-Case 03 word scope: alpha beta gamma
-Case 04 insert-in-line: route=/api/v1
-Case 05 delete-in-line: remove this marker now
-Case 06 mixed: Drift: alpha beta gamma delta epsilon zeta eta theta.
-Case 07 pure line deletion: Line delete only: remove me.
-Case 09 whitespace-only: Whitespace: key=[   ]
-Case 10 unicode/emoji: version=甲, stage-A 🙂
-Case 11 long-line clipping: Long: old token token token token token token token token end
-Case 12 context A
-Case 12 context change: change-old
-Case 12 context B
-```
-
-```txt
-# file2.txt
-Case 01 unchanged: Keep this line.
-Case 02 replace: status=new
-Case 03 word scope: alpha delta gamma
-Case 04 insert-in-line: route=/api/v1?sort=desc
-Case 05 delete-in-line: remove marker now
-Case 06 mixed: Drift: alpha gamma delta extra epsilon eta theta iota.
-Case 08 pure line insertion: Line insert only: add me.
-Case 09 whitespace-only: Whitespace: key=[  ]
-Case 10 unicode/emoji: version=乙, stage-B 🙂
-Case 11 long-line clipping: Long: new token token token token token token token token end
-Case 12 context A
-Case 12 context change: change-new
-Case 12 context B
-```
-
-```bash
-python zdiff.py file1.txt file2.txt
-```
-
 ```diff
 --- file1.txt
 +++ file2.txt
