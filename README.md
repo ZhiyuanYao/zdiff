@@ -13,12 +13,7 @@ A professional diff tool with git-style output and precise word-level highlighti
 - **🎯 Git-style diff output** - Professional formatting with file headers, hunk headers, and line numbers
 - **🔎 Word-level highlighting** - Highlights only affected words/tokens instead of whole lines
 - **🔗 Consecutive block merging** - Adjacent changed words form continuous highlight blocks
-- **🎨 Professional color scheme** - Blue/green backgrounds with white text optimized for readability
-- **📝 LaTeX-friendly text diffing** - Backslash-based expressions are kept as literal text during comparison
-- **📏 Word-boundary awareness** - Clean highlighting without character fragmentation
-- **⚙️ Customizable context** - Control number of context lines displayed
 - **🪟 Side-by-side mode** - Compare file1 (left) and file2 (right) with line numbers in both panels
-- **✅ Standard exit codes** - Proper exit codes for scripting integration
 
 ## 🚀 Quick Start
 
