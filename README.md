@@ -114,24 +114,49 @@ options:
 
 ## 📏 Diff Highlighting Rules (Final Output)
 
-One-line concrete examples (`file1 => file2`):
+Each rule below uses a one-line minimal `before => after` example (validated with current `zdiff` output):
 
-- `Unchanged line`: `Keep this line.` => `Keep this line.` (no highlight on either side).
-- `Changed line (single-column)`: `- Mod: speed` => `+ Mod: distance` (only changed tokens are highlighted).
-- `Changed line (side-by-side -s)`: `L: -Mod: speed || R: +Mod: distance` (same changed-token highlight in both panels).
-- `Word-level scope`: `alpha beta gamma` => `alpha delta gamma` (only `beta`/`delta` highlighted, not neighbors).
-- `Replace case`: `status=old` => `status=new` (old token highlighted left, new token highlighted right).
-- `Insert-in-line case`: `route=/api/v1` => `route=/api/v2?sort=desc` (inserted part highlighted on right only).
-- `Delete-in-line case`: `remove this marker now` => `remove marker now` (deleted part highlighted on left only).
-- `Mixed edit case`: `A beta C zeta` => `A extra C iota` (delete+insert spans highlighted where they exist).
-- `Pure line deletion`: `Line delete only: remove me.` => `<no line>` (full deleted line shown on left only).
-- `Pure line insertion`: `<no line>` => `Line insert only: add me.` (full inserted line shown on right only).
-- `Whitespace-only change`: `key=[␠␠␠]` => `key=[␠␠]` (space-only segment gets whitespace highlight color).
-- `Unicode/emoji/punctuation`: `版本=甲, stage-A 🙂` => `版本=乙, stage-B 🙂` (only changed spans highlighted).
-- `Long lines`: `long ... old-tail` => `long ... new-tail` (line may clip with `...`, highlight stays on changed part).
-- `Context around hunks`: `Context A` => `Context A` (shown as plain context without highlight).
-- `No textual changes`: `same file` => `same file` (prints `No changes detected`).
-- `EOF-newline-only difference`: `tail<no trailing newline>` => `tail<trailing newline>` (prints EOF newline difference block).
+### 1) Unchanged line
+<code>Keep this line.</code> => <code>Keep this line.</code> (no highlight on either side).
+
+### 2) Replace (single-column and -s)
+<code>status=<mark><del>old</del></mark></code> => <code>status=<mark><ins>new</ins></mark></code>.
+
+### 3) Word-level scope
+<code>alpha <mark><del>beta</del></mark> gamma</code> => <code>alpha <mark><ins>delta</ins></mark> gamma</code>.
+
+### 4) Insert-in-line
+<code>route=/api/v1</code> => <code>route=/api/<mark><ins>v1?sort=desc</ins></mark></code>.
+
+### 5) Delete-in-line
+<code>remove <mark><del>this</del></mark> marker now</code> => <code>remove marker now</code>.
+
+### 6) Mixed delete+insert
+<code>Drift: alpha <mark><del>beta</del></mark> ... epsilon <mark><del>zeta</del></mark> ...</code> => <code>Drift: alpha ... <mark><ins>extra</ins></mark> epsilon ... <mark><ins>iota</ins></mark> ...</code>.
+
+### 7) Pure line deletion
+<code><mark><del>Line delete only: remove me.</del></mark></code> => <code>&empty;</code>.
+
+### 8) Pure line insertion
+<code>&empty;</code> => <code><mark><ins>Line insert only: add me.</ins></mark></code>.
+
+### 9) Whitespace-only change
+<code>Whitespace: key=[␠␠<mark>␠</mark>]</code> => <code>Whitespace: key=[␠␠]</code>.
+
+### 10) Unicode/emoji/punctuation
+<code>版本=<mark><del>甲</del></mark>, stage-<mark><del>A</del></mark> 🙂</code> => <code>版本=<mark><ins>乙</ins></mark>, stage-<mark><ins>B</ins></mark> 🙂</code>.
+
+### 11) Long-line panel clipping
+<code>Long: <mark><del>old</del></mark> token token token ...</code> => <code>Long: <mark><ins>new</ins></mark> token token token ...</code>.
+
+### 12) Context around hunks
+<code>A / <mark><del>change-old</del></mark> / B</code> => <code>A / <mark><ins>change-new</ins></mark> / B</code>.
+
+### 13) No textual changes
+<code>same</code> => <code>same</code> (prints <code>No changes detected</code>).
+
+### 14) EOF-newline-only difference
+<code>tail&lt;no trailing newline&gt;</code> => <code>tail&lt;trailing newline&gt;</code> (prints explicit EOF newline difference block).
 
 Visual preview page: `diff_highlighting_examples.html`
 
