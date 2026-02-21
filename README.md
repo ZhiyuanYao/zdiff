@@ -91,30 +91,50 @@ options:
 
 ### Standard Diff Output
 
-```diff
---- file1.txt
-+++ file2.txt
-@@ -1,5 +1,5 @@
-   1  Hello world! This is a test file.
-   2  It contains multiple lines of text.
--  3  Some lines will be changed.
-+  3  Some lines have been modified here.
-   4  Others will remain the same.
--  5  This is line five.
-+  5  This is line five with extra content.
+The repository includes a concrete fixture pair that collects the one-line examples:
+
+```txt
+# file1.txt
+Case 01 unchanged: Keep this line.
+Case 02 replace: status=old
+Case 03 word scope: alpha beta gamma
+Case 04 insert-in-line: route=/api/v1
+Case 05 delete-in-line: remove this marker now
+Case 06 mixed: Drift: alpha beta gamma delta epsilon zeta eta theta.
+Case 07 pure line deletion: Line delete only: remove me.
+Case 09 whitespace-only: Whitespace: key=[   ]
+Case 10 unicode/emoji: version=甲, stage-A 🙂
+Case 11 long-line clipping: Long: old token token token token token token token token end
+Case 12 context A
+Case 12 context change: change-old
+Case 12 context B
 ```
 
-### Key Visual Features
+```txt
+# file2.txt
+Case 01 unchanged: Keep this line.
+Case 02 replace: status=new
+Case 03 word scope: alpha delta gamma
+Case 04 insert-in-line: route=/api/v1?sort=desc
+Case 05 delete-in-line: remove marker now
+Case 06 mixed: Drift: alpha gamma delta extra epsilon eta theta iota.
+Case 08 pure line insertion: Line insert only: add me.
+Case 09 whitespace-only: Whitespace: key=[  ]
+Case 10 unicode/emoji: version=乙, stage-B 🙂
+Case 11 long-line clipping: Long: new token token token token token token token token end
+Case 12 context A
+Case 12 context change: change-new
+Case 12 context B
+```
 
-- **Gray line numbers** for easy reference
-- **Blue backgrounds** for deleted content with highlighted changed words
-- **Green backgrounds** for added content with highlighted changed words
-- **Consecutive highlighting** - Multiple adjacent changes appear as continuous blocks
-- **Context lines** shown without highlighting for reference
+```bash
+python zdiff.py file1.txt file2.txt
+python zdiff.py -s file1.txt file2.txt
+```
 
-## 📏 Diff Highlighting Rules (Final Output)
+### zdiff Output
 
-Each rule below uses a one-line minimal `before => after` example (validated with current `zdiff` output):
+Each rule below uses a one-line minimal `before => after` example (validated against current `zdiff` output):
 
 <code><span style="background:#ffd6db;padding:0 2px;border-radius:3px;">old-side changed text</span></code>
 <code><span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">new-side changed text</span></code>
@@ -162,6 +182,14 @@ Each rule below uses a one-line minimal `before => after` example (validated wit
 <code>tail&lt;no trailing newline&gt;</code> => <code>tail&lt;trailing newline&gt;</code> (prints explicit EOF newline difference block).
 
 Visual preview page: `diff_highlighting_examples.html`
+
+### Key Visual Features
+
+- **Gray line numbers** for easy reference
+- **Blue backgrounds** for deleted content with highlighted changed words
+- **Green backgrounds** for added content with highlighted changed words
+- **Consecutive highlighting** - Multiple adjacent changes appear as continuous blocks
+- **Context lines** shown without highlighting for reference
 
 ## 🔧 Advanced Features
 
