@@ -882,11 +882,6 @@ and professional formatting optimized for code and text comparison.
         help='Second file to compare'
     )
     parser.add_argument(
-        '--no-color',
-        action='store_true',
-        help='Disable colored output'
-    )
-    parser.add_argument(
         '--context',
         '-c',
         type=non_negative_int,
@@ -913,12 +908,6 @@ and professional formatting optimized for code and text comparison.
     if not file2_path.exists():
         print(f"Error: File not found: {args.file2}", file=sys.stderr)
         sys.exit(2)
-
-    # Disable colors if requested
-    if args.no_color:
-        for attr in dir(Colors):
-            if not attr.startswith('_'):
-                setattr(Colors, attr, '')
 
     # Read file contents as-is (no escape-sequence transformation)
     old_content = read_file(file1_path)

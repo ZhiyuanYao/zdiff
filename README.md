@@ -17,7 +17,6 @@ A professional diff tool that provides git-style output with intelligent block-l
 - **📏 Word-boundary awareness** - Clean highlighting without character fragmentation
 - **⚙️ Customizable context** - Control number of context lines displayed
 - **🪟 Side-by-side mode** - Compare file1 (left) and file2 (right) with line numbers in both panels
-- **🚫 No-color support** - Disable colors for piping or unsupported terminals
 - **✅ Standard exit codes** - Proper exit codes for scripting integration
 
 ## 🚀 Installation
@@ -58,9 +57,6 @@ python zdiff.py file1.txt file2.txt
 # Show help
 python zdiff.py --help
 
-# Disable colors (useful for piping)
-python zdiff.py --no-color file1.txt file2.txt
-
 # Custom context lines (default: 3)
 python zdiff.py --context 5 file1.txt file2.txt
 python zdiff.py -c 5 file1.txt file2.txt
@@ -73,7 +69,7 @@ python zdiff.py -s file1.txt file2.txt
 ### Full Command Reference
 
 ```
-usage: zdiff.py [-h] [--no-color] [--context CONTEXT] [--side-by-side] file1 file2
+usage: zdiff.py [-h] [--context CONTEXT] [--side-by-side] file1 file2
 
 zdiff - Advanced Text Diff Tool with Git-Style Output
 
@@ -86,7 +82,6 @@ positional arguments:
 
 options:
   -h, --help            show this help message and exit
-  --no-color            Disable colored output
   --context CONTEXT, -c CONTEXT
                         Number of context lines to show (default: 3)
   --side-by-side, -s    Show diff in side-by-side panels with line numbers
@@ -137,7 +132,6 @@ One-line concrete examples (`file1 => file2`):
 - `Context around hunks`: `Context A` => `Context A` (shown as plain context without highlight).
 - `No textual changes`: `same file` => `same file` (prints `No changes detected`).
 - `EOF-newline-only difference`: `tail<no trailing newline>` => `tail<trailing newline>` (prints EOF newline difference block).
-- `--no-color mode`: `python zdiff.py --no-color old new` => same text/markers with all ANSI colors removed.
 
 Visual preview page: `diff_highlighting_examples.html`
 
@@ -229,9 +223,6 @@ test: check-diff
 ```bash
 # Try with explicit color support
 python zdiff.py file1.txt file2.txt
-
-# Or disable colors
-python zdiff.py --no-color file1.txt file2.txt
 ```
 
 **File encoding errors:**
@@ -293,7 +284,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Professional color scheme
 - Smart LaTeX command preservation
 - Word-boundary-aware highlighting
-- Context control and no-color support
+- Context control
 
 ---
 
