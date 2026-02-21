@@ -121,46 +121,46 @@ Each rule below uses a one-line minimal `before => after` example (validated aga
 <code><span style="background:#ffd6db;padding:0 2px;border-radius:3px;">old-side changed text</span></code>
 <code><span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">new-side changed text</span></code>
 
-### 1) Unchanged line
+#### 1) Unchanged line
 <code>Keep this line.</code> => <code>Keep this line.</code> (no highlight on either side).
 
-### 2) Replace (single-column and -s)
+#### 2) Replace (single-column and -s)
 <code>status=<span style="background:#ffd6db;padding:0 2px;border-radius:3px;">old</span></code> => <code>status=<span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">new</span></code>.
 
-### 3) Word-level scope
+#### 3) Word-level scope
 <code>alpha <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">beta</span> gamma</code> => <code>alpha <span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">delta</span> gamma</code>.
 
-### 4) Insert-in-line
+#### 4) Insert-in-line
 <code>route=/api/v1</code> => <code>route=/api/<span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">v1?sort=desc</span></code>.
 
-### 5) Delete-in-line
+#### 5) Delete-in-line
 <code>remove <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">this</span> marker now</code> => <code>remove marker now</code>.
 
-### 6) Mixed delete+insert
+#### 6) Mixed delete+insert
 <code>Drift: alpha <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">beta</span> ... epsilon <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">zeta</span> ...</code> => <code>Drift: alpha ... <span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">extra</span> epsilon ... <span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">iota</span> ...</code>.
 
-### 7) Pure line deletion
+#### 7) Pure line deletion
 <code><span style="background:#ffd6db;padding:0 2px;border-radius:3px;">Line delete only: remove me.</span></code> => <code>&empty;</code>.
 
-### 8) Pure line insertion
+#### 8) Pure line insertion
 <code>&empty;</code> => <code><span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">Line insert only: add me.</span></code>.
 
-### 9) Whitespace-only change
+#### 9) Whitespace-only change
 <code>Whitespace: key=[␠␠<span style="background:#ffd6db;padding:0 2px;border-radius:3px;">␠</span>]</code> => <code>Whitespace: key=[␠␠]</code>.
 
-### 10) Unicode/emoji/punctuation
+#### 10) Unicode/emoji/punctuation
 <code>版本=<span style="background:#ffd6db;padding:0 2px;border-radius:3px;">甲</span>, stage-<span style="background:#ffd6db;padding:0 2px;border-radius:3px;">A</span> 🙂</code> => <code>版本=<span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">乙</span>, stage-<span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">B</span> 🙂</code>.
 
-### 11) Long-line panel clipping
+#### 11) Long-line panel clipping
 <code>Long: <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">old</span> token token token ...</code> => <code>Long: <span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">new</span> token token token ...</code>.
 
-### 12) Context around hunks
+#### 12) Context around hunks
 <code>A / <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">change-old</span> / B</code> => <code>A / <span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">change-new</span> / B</code>.
 
-### 13) No textual changes
+#### 13) No textual changes
 <code>same</code> => <code>same</code> (prints <code>No changes detected</code>).
 
-### 14) EOF-newline-only difference
+#### 14) EOF-newline-only difference
 <code>tail&lt;no trailing newline&gt;</code> => <code>tail&lt;trailing newline&gt;</code> (prints explicit EOF newline difference block).
 
 Visual preview page: `diff_highlighting_examples.html`
