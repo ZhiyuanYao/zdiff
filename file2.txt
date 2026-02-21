@@ -12,3 +12,4 @@ Case 11 long-line clipping: Long: new token token token token token token token 
 Case 12 context A
 Case 12 context change: change-new
 Case 12 context B
+Case 13 latex-literal: LaTeX \text{distance} = v \times t

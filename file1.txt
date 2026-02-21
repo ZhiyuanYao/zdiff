@@ -12,3 +12,4 @@ Case 11 long-line clipping: Long: old token token token token token token token 
 Case 12 context A
 Case 12 context change: change-old
 Case 12 context B
+Case 13 latex-literal: LaTeX \text{speed} = v \times t

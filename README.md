@@ -50,7 +50,7 @@ Exit codes:
 ```diff
 --- file1.txt
 +++ file2.txt
-@@ -1,14 +1,14 @@
+@@ -1,15 +1,15 @@
    1  Case 01 unchanged: Keep this line.
 -  2  Case 02 replace: status=old
 +  2  Case 02 replace: status=new
@@ -75,12 +75,14 @@ Exit codes:
 - 13  Case 12 context change: change-old
 + 13  Case 12 context change: change-new
   14  Case 12 context B
+- 15  Case 13 latex-literal: LaTeX \text{speed} = v \times t
++ 15  Case 13 latex-literal: LaTeX \text{distance} = v \times t
 ```
 
 ### zdiff Output
 
 Each rule below uses a one-line minimal `before => after` example (validated against current `zdiff` output):
-Rules 1-12 map directly to the lines in the Standard Diff Output block above; rules 13-14 are special standalone outcomes.
+Rules 1-13 map directly to the lines in the Standard Diff Output block above; rules 14-15 are special standalone outcomes.
 
 <code><span style="background:#ffd6db;padding:0 2px;border-radius:3px;">old-side changed text</span></code>
 <code><span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">new-side changed text</span></code>
@@ -121,13 +123,14 @@ Rules 1-12 map directly to the lines in the Standard Diff Output block above; ru
 #### 12) Context around hunks
 <code>A / <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">change-old</span> / B</code> => <code>A / <span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">change-new</span> / B</code>.
 
-#### 13) No textual changes
+#### 13) LaTeX literal text change
+<code>LaTeX \text{<span style="background:#ffd6db;padding:0 2px;border-radius:3px;">speed</span>} = v \times t</code> => <code>LaTeX \text{<span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">distance</span>} = v \times t</code>.
+
+#### 14) No textual changes
 <code>same</code> => <code>same</code> (prints <code>No changes detected</code>).
 
-#### 14) EOF-newline-only difference
+#### 15) EOF-newline-only difference
 <code>tail&lt;no trailing newline&gt;</code> => <code>tail&lt;trailing newline&gt;</code> (prints explicit EOF newline difference block).
-
-Visual preview page: `diff_highlighting_examples.html`
 
 ### Key Visual Features
 
