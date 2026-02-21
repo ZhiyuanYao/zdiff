@@ -4,6 +4,7 @@ Case 03 word scope: alpha delta gamma
 Case 04 insert-in-line: route=/api/v1?sort=desc
 Case 05 delete-in-line: remove marker now
 Case 06 mixed: Drift: alpha gamma delta extra epsilon eta theta iota.
+Case 07/08 shared anchor: keep this line.
 Case 08 pure line insertion: Line insert only: add me.
 Case 09 whitespace-only: Whitespace: key=[  ]
 Case 10 unicode/emoji: version=乙, stage-B 🙂

@@ -48,7 +48,7 @@ usage: zdiff.py [-h] [--context CONTEXT] [--side-by-side] file1 file2
 ```diff
 --- file1.txt
 +++ file2.txt
-@@ -1,13 +1,13 @@
+@@ -1,14 +1,14 @@
    1  Case 01 unchanged: Keep this line.
 -  2  Case 02 replace: status=old
 +  2  Case 02 replace: status=new
@@ -61,22 +61,24 @@ usage: zdiff.py [-h] [--context CONTEXT] [--side-by-side] file1 file2
 -  6  Case 06 mixed: Drift: alpha beta gamma delta epsilon zeta eta theta.
 +  6  Case 06 mixed: Drift: alpha gamma delta extra epsilon eta theta iota.
 -  7  Case 07 pure line deletion: Line delete only: remove me.
-+  7  Case 08 pure line insertion: Line insert only: add me.
--  8  Case 09 whitespace-only: Whitespace: key=[   ]
-+  8  Case 09 whitespace-only: Whitespace: key=[  ]
--  9  Case 10 unicode/emoji: version=甲, stage-A 🙂
-+  9  Case 10 unicode/emoji: version=乙, stage-B 🙂
-- 10  Case 11 long-line clipping: Long: old token token token token token token token token end
-+ 10  Case 11 long-line clipping: Long: new token token token token token token token token end
-  11  Case 12 context A
-- 12  Case 12 context change: change-old
-+ 12  Case 12 context change: change-new
-  13  Case 12 context B
+   8  Case 07/08 shared anchor: keep this line.
++  8  Case 08 pure line insertion: Line insert only: add me.
+-  9  Case 09 whitespace-only: Whitespace: key=[   ]
++  9  Case 09 whitespace-only: Whitespace: key=[  ]
+- 10  Case 10 unicode/emoji: version=甲, stage-A 🙂
++ 10  Case 10 unicode/emoji: version=乙, stage-B 🙂
+- 11  Case 11 long-line clipping: Long: old token token token token token token token token end
++ 11  Case 11 long-line clipping: Long: new token token token token token token token token end
+  12  Case 12 context A
+- 13  Case 12 context change: change-old
++ 13  Case 12 context change: change-new
+  14  Case 12 context B
 ```
 
 ### zdiff Output
 
 Each rule below uses a one-line minimal `before => after` example (validated against current `zdiff` output):
+Rules 1-12 map directly to the lines in the Standard Diff Output block above; rules 13-14 are special standalone outcomes.
 
 <code><span style="background:#ffd6db;padding:0 2px;border-radius:3px;">old-side changed text</span></code>
 <code><span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">new-side changed text</span></code>
