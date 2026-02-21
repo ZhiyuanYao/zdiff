@@ -501,15 +501,18 @@ def get_block_level_diff(old_text, new_text, old_line_bg=None, new_line_bg=None)
                 expanded.append((forward_start, forward_end))
                 continue
 
-            # Expand backward to start of word
+            # Expand only when the changed span itself touches word chars.
+            # This avoids absorbing unchanged prefix/suffix words for punctuation-led
+            # insertions such as ".../v1" -> ".../v1?sort=desc".
             expanded_start = start
-            while expanded_start > 0 and is_word_char(text[expanded_start - 1]):
-                expanded_start -= 1
+            if expanded_start < len(text) and is_word_char(text[expanded_start]):
+                while expanded_start > 0 and is_word_char(text[expanded_start - 1]):
+                    expanded_start -= 1
 
-            # Expand forward to end of word
             expanded_end = end
-            while expanded_end < len(text) and is_word_char(text[expanded_end]):
-                expanded_end += 1
+            if expanded_end > 0 and is_word_char(text[expanded_end - 1]):
+                while expanded_end < len(text) and is_word_char(text[expanded_end]):
+                    expanded_end += 1
 
             expanded.append((expanded_start, expanded_end))
 

@@ -95,7 +95,7 @@ Rules 1-12 map directly to the lines in the Standard Diff Output block above; ru
 <code>alpha <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">beta</span> gamma</code> => <code>alpha <span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">delta</span> gamma</code>.
 
 #### 4) Insert-in-line
-<code>route=/api/v1</code> => <code>route=/api/<span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">v1?sort=desc</span></code>.
+<code>route=/api/v1</code> => <code>route=/api/v1<span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">?sort=desc</span></code>.
 
 #### 5) Delete-in-line
 <code>remove <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">this</span> marker now</code> => <code>remove marker now</code>.
@@ -143,12 +143,17 @@ Visual preview page: `diff_highlighting_examples.html`
 
 ```bash
 #!/bin/bash
-# Compare files and handle results
-if python zdiff.py old_config.json new_config.json; then
-    echo "Files are identical"
-else
-    echo "Files differ"
-fi
+# Compare files and handle all zdiff exit codes (0/1/2)
+python zdiff.py old_config.json new_config.json
+rc=$?
+
+case "$rc" in
+  0) echo "Files are identical" ;;
+  1) echo "Files differ" ;;
+  2) echo "Error occurred (e.g., missing file)" >&2 ;;
+esac
+
+exit "$rc"
 ```
 
 ### Makefile Integration
