@@ -221,12 +221,71 @@ test: check-diff
 | No dependencies | ✅ | ❌ | ✅ | ❌ |
 | Cross-platform | ✅ | ✅ | ✅ | ❌ |
 
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**Colors not showing:**
+```bash
+# Try with explicit color support
+python zdiff.py file1.txt file2.txt
+```
+
+**File encoding errors:**
+- zdiff automatically tries UTF-8 first, then falls back to latin-1
+- Most text files should work without issues
+
+**Large file performance:**
+- For very large files, consider using standard tools first
 - zdiff is optimized for readability over raw speed
+
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Setup
+
+```bash
+git clone https://github.com/example/zdiff.git
+cd zdiff
+python -m pytest tests/  # Run tests (if available)
+```
 
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-**Made with ❤️ for developers who appreciate clean, readable diffs.**
+## 🙏 Acknowledgments
+
+- Inspired by git diff and GNU diff
+- Built with Python's excellent `difflib` module
+- Color scheme inspired by professional IDE themes
+- Special thanks to the open-source community
+
+## 📞 Support
+
+- **Author:** Zhiyuan Yao (zhiyuan.yao@icloud.com)
+- **Institution:** Lanzhou Center for Theoretical Physics, Lanzhou University
+- **Issues:** [GitHub Issues](https://github.com/example/zdiff/issues)
+- **Documentation:** This README and inline help (`--help`)
+
+## 🔄 Version History
+
+### v1.0.0 (2025-08-08)
+- Initial release
+- Git-style diff output
+- Consecutive block merging
+- Professional color scheme
+- Smart LaTeX command preservation
+- Word-boundary-aware highlighting
+- Context control
 
 ---
+
+**Made with ❤️ for developers who appreciate clean, readable diffs.**
