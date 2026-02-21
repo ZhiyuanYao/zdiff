@@ -501,15 +501,18 @@ def get_block_level_diff(old_text, new_text, old_line_bg=None, new_line_bg=None)
                 expanded.append((forward_start, forward_end))
                 continue
 
-            # Expand backward to start of word
+            # Expand only when the changed span itself touches word chars.
+            # This avoids absorbing unchanged prefix/suffix words for punctuation-led
+            # insertions such as ".../v1" -> ".../v1?sort=desc".
             expanded_start = start
-            while expanded_start > 0 and is_word_char(text[expanded_start - 1]):
-                expanded_start -= 1
+            if expanded_start < len(text) and is_word_char(text[expanded_start]):
+                while expanded_start > 0 and is_word_char(text[expanded_start - 1]):
+                    expanded_start -= 1
 
-            # Expand forward to end of word
             expanded_end = end
-            while expanded_end < len(text) and is_word_char(text[expanded_end]):
-                expanded_end += 1
+            if expanded_end > 0 and is_word_char(text[expanded_end - 1]):
+                while expanded_end < len(text) and is_word_char(text[expanded_end]):
+                    expanded_end += 1
 
             expanded.append((expanded_start, expanded_end))
 
@@ -882,11 +885,6 @@ and professional formatting optimized for code and text comparison.
         help='Second file to compare'
     )
     parser.add_argument(
-        '--no-color',
-        action='store_true',
-        help='Disable colored output'
-    )
-    parser.add_argument(
         '--context',
         '-c',
         type=non_negative_int,
@@ -913,12 +911,6 @@ and professional formatting optimized for code and text comparison.
     if not file2_path.exists():
         print(f"Error: File not found: {args.file2}", file=sys.stderr)
         sys.exit(2)
-
-    # Disable colors if requested
-    if args.no_color:
-        for attr in dir(Colors):
-            if not attr.startswith('_'):
-                setattr(Colors, attr, '')
 
     # Read file contents as-is (no escape-sequence transformation)
     old_content = read_file(file1_path)

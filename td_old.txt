@@ -1,3 +1,0 @@
-Emoji case: deployment🙂stage-A completed with note-old.
-Replace block line 1: old phrase one
-LaTeX formula: \text{speed} = v \times t
