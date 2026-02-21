@@ -74,19 +74,6 @@ usage: zdiff.py [-h] [--context CONTEXT] [--side-by-side] file1 file2
   13  Case 12 context B
 ```
 
-```diff
---- file1.txt
-+++ file2.txt
-@@ -1,5 +1,5 @@
-   1  Hello world! This is a test file.
-   2  It contains multiple lines of text.
--  3  Some lines will be changed.
-+  3  Some lines have been modified here.
-   4  Others will remain the same.
--  5  This is line five.
-+  5  This is line five with extra content.
-```
-
 ### zdiff Output
 
 Each rule below uses a one-line minimal `before => after` example (validated against current `zdiff` output):
