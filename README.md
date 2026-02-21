@@ -117,6 +117,26 @@ options:
 - **Consecutive highlighting** - Multiple adjacent changes appear as continuous blocks
 - **Context lines** shown without highlighting for reference
 
+## 📏 Diff Highlighting Rules (Final Output)
+
+- `Unchanged line`: no line background and no inline highlight in either mode.
+- `Changed line (single-column)`: old line is printed with `-`, new line with `+`, and only changed spans get inline highlight.
+- `Changed line (side-by-side -s)`: left panel is file1 and right panel is file2, both with line numbers and inline changed-span highlight.
+- `Word-level scope`: unchanged words inside a changed line stay unhighlighted.
+- `Replace case`: replaced words are highlighted on both sides.
+- `Insert-in-line case`: inserted words are highlighted only on the new/right side.
+- `Delete-in-line case`: deleted words are highlighted only on the old/left side.
+- `Mixed edit case`: inserted, deleted, and replaced spans can appear together, each highlighted only where they exist.
+- `Pure line deletion`: the deleted line is shown only on old/left with deletion styling and no mirrored content on new/right.
+- `Pure line insertion`: the inserted line is shown only on new/right with insertion styling and no mirrored content on old/left.
+- `Whitespace-only change`: changed spaces/tabs get a dedicated space-diff background (red-toned for old, green-toned for new).
+- `Unicode/emoji/punctuation`: highlighted exactly like other text, with only changed spans marked.
+- `Long lines`: each panel is width-fitted and may end with `...`, while highlight boundaries stay consistent before clipping.
+- `Context around hunks`: nearby unchanged lines are shown as plain context.
+- `No textual changes`: output shows `No changes detected`.
+- `EOF-newline-only difference`: output shows an explicit EOF newline difference block instead of inline word highlights.
+- `--no-color mode`: same diff structure and markers are shown, but all ANSI highlighting is removed.
+
 ## 🔧 Advanced Features
 
 ### Consecutive Block Merging

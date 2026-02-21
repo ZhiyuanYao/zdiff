@@ -1,5 +1,0 @@
-Start
-Wide chars case: 状态=稳定，模块=核心，版本=甲，区域=东区。
-Emoji case: deployment🙂stage-A completed with note-old.
-Overflow case: OLD::segment::aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-End
