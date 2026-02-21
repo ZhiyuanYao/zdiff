@@ -49,29 +49,42 @@ usage: zdiff.py [-h] [--context CONTEXT] [--side-by-side] file1 file2
 --- file1.txt
 +++ file2.txt
 @@ -1,13 +1,13 @@
-   1 Case 01 unchanged: Keep this line.
-   2 -Case 02 replace: status=old
-   2 +Case 02 replace: status=new
-   3 -Case 03 word scope: alpha beta gamma
-   3 +Case 03 word scope: alpha delta gamma
-   4 -Case 04 insert-in-line: route=/api/v1
-   4 +Case 04 insert-in-line: route=/api/v1?sort=desc
-   5 -Case 05 delete-in-line: remove this marker now
-   5 +Case 05 delete-in-line: remove marker now
-   6 -Case 06 mixed: Drift: alpha beta gamma delta epsilon zeta eta theta.
-   6 +Case 06 mixed: Drift: alpha gamma delta extra epsilon eta theta iota.
-   7 -Case 07 pure line deletion: Line delete only: remove me.
-   7 +Case 08 pure line insertion: Line insert only: add me.
-   8 -Case 09 whitespace-only: Whitespace: key=[   ]
-   8 +Case 09 whitespace-only: Whitespace: key=[  ]
-   9 -Case 10 unicode/emoji: version=甲, stage-A 🙂
-   9 +Case 10 unicode/emoji: version=乙, stage-B 🙂
-  10 -Case 11 long-line clipping: Long: old token token token token token token token token end
-  10 +Case 11 long-line clipping: Long: new token token token token token token token token end
-  11 Case 12 context A
-  12 -Case 12 context change: change-old
-  12 +Case 12 context change: change-new
-  13 Case 12 context B
+   1  Case 01 unchanged: Keep this line.
+-  2  Case 02 replace: status=old
++  2  Case 02 replace: status=new
+-  3  Case 03 word scope: alpha beta gamma
++  3  Case 03 word scope: alpha delta gamma
+-  4  Case 04 insert-in-line: route=/api/v1
++  4  Case 04 insert-in-line: route=/api/v1?sort=desc
+-  5  Case 05 delete-in-line: remove this marker now
++  5  Case 05 delete-in-line: remove marker now
+-  6  Case 06 mixed: Drift: alpha beta gamma delta epsilon zeta eta theta.
++  6  Case 06 mixed: Drift: alpha gamma delta extra epsilon eta theta iota.
+-  7  Case 07 pure line deletion: Line delete only: remove me.
++  7  Case 08 pure line insertion: Line insert only: add me.
+-  8  Case 09 whitespace-only: Whitespace: key=[   ]
++  8  Case 09 whitespace-only: Whitespace: key=[  ]
+-  9  Case 10 unicode/emoji: version=甲, stage-A 🙂
++  9  Case 10 unicode/emoji: version=乙, stage-B 🙂
+- 10  Case 11 long-line clipping: Long: old token token token token token token token token end
++ 10  Case 11 long-line clipping: Long: new token token token token token token token token end
+  11  Case 12 context A
+- 12  Case 12 context change: change-old
++ 12  Case 12 context change: change-new
+  13  Case 12 context B
+```
+
+```diff
+--- file1.txt
++++ file2.txt
+@@ -1,5 +1,5 @@
+   1  Hello world! This is a test file.
+   2  It contains multiple lines of text.
+-  3  Some lines will be changed.
++  3  Some lines have been modified here.
+   4  Others will remain the same.
+-  5  This is line five.
++  5  This is line five with extra content.
 ```
 
 ### zdiff Output
