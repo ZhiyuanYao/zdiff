@@ -1,6 +1,6 @@
 # zdiff.py - Advanced Text Diff Tool
 
-[![Version](https://img.shields.io/badge/version-1.0-blue.svg)](https://github.com/example/zdiff)
+[![Version](https://img.shields.io/badge/version-1.1-blue.svg)](https://github.com/example/zdiff)
 [![Python](https://img.shields.io/badge/python-3.6+-green.svg)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
 
@@ -13,7 +13,7 @@ A professional diff tool that provides git-style output with intelligent block-l
 - **🎯 Git-style diff output** - Professional formatting with file headers, hunk headers, and line numbers
 - **🔗 Consecutive block merging** - Adjacent changed words form continuous highlight blocks
 - **🎨 Professional color scheme** - Blue/green backgrounds with white text optimized for readability
-- **📝 Smart LaTeX preservation** - Intelligent handling of LaTeX commands and escape sequences
+- **📝 LaTeX-friendly text diffing** - Backslash-based expressions are kept as literal text during comparison
 - **📏 Word-boundary awareness** - Clean highlighting without character fragmentation
 - **⚙️ Customizable context** - Control number of context lines displayed
 - **🪟 Side-by-side mode** - Compare file1 (left) and file2 (right) with line numbers in both panels
@@ -159,10 +159,10 @@ Some [lines will be changed]
 
 ### Smart LaTeX Handling
 
-The tool preserves LaTeX commands while properly handling escape sequences:
-- `\text`, `\tan`, `\times` → Preserved as LaTeX commands
-- `\t` (standalone) → Converted to tab character
-- `\n` → Converted to newline
+The tool compares LaTeX-like strings as plain text:
+- `\text`, `\tan`, `\times` are preserved as literal substrings in output
+- backslashes are not interpreted as control escapes during diffing
+- `\t` / `\n` remain literal two-character sequences unless your input file already contains real tab/newline characters
 
 ### Word Boundary Intelligence
 
@@ -206,20 +206,16 @@ test: check-diff
 
 ## 📊 Performance
 
-- **Memory efficient** - Streams file content without loading entire files into memory
+- **In-memory comparison** - Reads both input files fully before diffing
 - **Fast processing** - Character-level diff with word-boundary optimization
-- **Large file support** - Handles files of any size with proper encoding detection
+- **Best for small/medium files** - Very large files may be slower due to full in-memory processing
 
-## 🔍 Comparison with Standard Tools
+## 🔍 Tool Focus
 
-| Feature | zdiff.py | git diff | GNU diff | diff-so-fancy |
-|---------|----------|----------|----------|---------------|
-| Consecutive block merging | ✅ | ❌ | ❌ | ❌ |
-| Word-boundary awareness | ✅ | ❌ | ❌ | ✅ |
-| LaTeX command preservation | ✅ | ❌ | ❌ | ❌ |
-| Professional color scheme | ✅ | ✅ | ❌ | ✅ |
-| No dependencies | ✅ | ❌ | ✅ | ❌ |
-| Cross-platform | ✅ | ✅ | ✅ | ❌ |
+- `zdiff` prioritizes human-readable terminal output over minimal/raw diff output.
+- It combines line-level context with inline token-level highlights.
+- It includes side-by-side panels with line numbers for both files.
+- It preserves useful scriptability semantics via stable exit codes (`0/1/2`).
 
 ## 🐛 Troubleshooting
 
@@ -277,12 +273,18 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🔄 Version History
 
+### v1.1.0 (2026-02-21)
+- Side-by-side mode (`-s`) with dual line-number panels
+- Improved word-level highlighting behavior across mixed insert/delete/replace cases
+- Refined whitespace-only and boundary-aware highlight rendering
+- Updated documentation and demo assets
+
 ### v1.0.0 (2025-08-08)
 - Initial release
 - Git-style diff output
 - Consecutive block merging
 - Professional color scheme
-- Smart LaTeX command preservation
+- LaTeX-friendly literal text comparison
 - Word-boundary-aware highlighting
 - Context control
 
