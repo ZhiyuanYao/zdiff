@@ -116,41 +116,44 @@ options:
 
 Each rule below uses a one-line minimal `before => after` example (validated with current `zdiff` output):
 
+<code><span style="background:#ffd6db;padding:0 2px;border-radius:3px;">old-side changed text</span></code>
+<code><span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">new-side changed text</span></code>
+
 ### 1) Unchanged line
 <code>Keep this line.</code> => <code>Keep this line.</code> (no highlight on either side).
 
 ### 2) Replace (single-column and -s)
-<code>status=<mark><del>old</del></mark></code> => <code>status=<mark><ins>new</ins></mark></code>.
+<code>status=<span style="background:#ffd6db;padding:0 2px;border-radius:3px;">old</span></code> => <code>status=<span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">new</span></code>.
 
 ### 3) Word-level scope
-<code>alpha <mark><del>beta</del></mark> gamma</code> => <code>alpha <mark><ins>delta</ins></mark> gamma</code>.
+<code>alpha <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">beta</span> gamma</code> => <code>alpha <span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">delta</span> gamma</code>.
 
 ### 4) Insert-in-line
-<code>route=/api/v1</code> => <code>route=/api/<mark><ins>v1?sort=desc</ins></mark></code>.
+<code>route=/api/v1</code> => <code>route=/api/<span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">v1?sort=desc</span></code>.
 
 ### 5) Delete-in-line
-<code>remove <mark><del>this</del></mark> marker now</code> => <code>remove marker now</code>.
+<code>remove <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">this</span> marker now</code> => <code>remove marker now</code>.
 
 ### 6) Mixed delete+insert
-<code>Drift: alpha <mark><del>beta</del></mark> ... epsilon <mark><del>zeta</del></mark> ...</code> => <code>Drift: alpha ... <mark><ins>extra</ins></mark> epsilon ... <mark><ins>iota</ins></mark> ...</code>.
+<code>Drift: alpha <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">beta</span> ... epsilon <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">zeta</span> ...</code> => <code>Drift: alpha ... <span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">extra</span> epsilon ... <span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">iota</span> ...</code>.
 
 ### 7) Pure line deletion
-<code><mark><del>Line delete only: remove me.</del></mark></code> => <code>&empty;</code>.
+<code><span style="background:#ffd6db;padding:0 2px;border-radius:3px;">Line delete only: remove me.</span></code> => <code>&empty;</code>.
 
 ### 8) Pure line insertion
-<code>&empty;</code> => <code><mark><ins>Line insert only: add me.</ins></mark></code>.
+<code>&empty;</code> => <code><span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">Line insert only: add me.</span></code>.
 
 ### 9) Whitespace-only change
-<code>Whitespace: key=[␠␠<mark>␠</mark>]</code> => <code>Whitespace: key=[␠␠]</code>.
+<code>Whitespace: key=[␠␠<span style="background:#ffd6db;padding:0 2px;border-radius:3px;">␠</span>]</code> => <code>Whitespace: key=[␠␠]</code>.
 
 ### 10) Unicode/emoji/punctuation
-<code>版本=<mark><del>甲</del></mark>, stage-<mark><del>A</del></mark> 🙂</code> => <code>版本=<mark><ins>乙</ins></mark>, stage-<mark><ins>B</ins></mark> 🙂</code>.
+<code>版本=<span style="background:#ffd6db;padding:0 2px;border-radius:3px;">甲</span>, stage-<span style="background:#ffd6db;padding:0 2px;border-radius:3px;">A</span> 🙂</code> => <code>版本=<span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">乙</span>, stage-<span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">B</span> 🙂</code>.
 
 ### 11) Long-line panel clipping
-<code>Long: <mark><del>old</del></mark> token token token ...</code> => <code>Long: <mark><ins>new</ins></mark> token token token ...</code>.
+<code>Long: <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">old</span> token token token ...</code> => <code>Long: <span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">new</span> token token token ...</code>.
 
 ### 12) Context around hunks
-<code>A / <mark><del>change-old</del></mark> / B</code> => <code>A / <mark><ins>change-new</ins></mark> / B</code>.
+<code>A / <span style="background:#ffd6db;padding:0 2px;border-radius:3px;">change-old</span> / B</code> => <code>A / <span style="background:#c9f7d8;padding:0 2px;border-radius:3px;">change-new</span> / B</code>.
 
 ### 13) No textual changes
 <code>same</code> => <code>same</code> (prints <code>No changes detected</code>).
