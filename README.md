@@ -4,13 +4,14 @@
 [![Python](https://img.shields.io/badge/python-3.6+-green.svg)](https://python.org)
 [![License](https://img.shields.io/badge/license-MIT-orange.svg)](LICENSE)
 
-A professional diff tool that provides git-style output with intelligent block-level highlighting, consecutive word merging, and clean visual formatting. Designed for enhanced readability and professional code/text comparison.
+A professional diff tool with git-style output and precise word-level highlighting. It emphasizes only changed tokens in both single-column and side-by-side views for clear, review-friendly text/code comparison.
 
 ![zdiff demo](demo.gif)
 
 ## ✨ Features
 
 - **🎯 Git-style diff output** - Professional formatting with file headers, hunk headers, and line numbers
+- **🔎 Word-level highlighting** - Highlights only affected words/tokens instead of whole lines
 - **🔗 Consecutive block merging** - Adjacent changed words form continuous highlight blocks
 - **🎨 Professional color scheme** - Blue/green backgrounds with white text optimized for readability
 - **📝 LaTeX-friendly text diffing** - Backslash-based expressions are kept as literal text during comparison
@@ -141,37 +142,6 @@ Visual preview page: `diff_highlighting_examples.html`
 - **Consecutive highlighting** - Multiple adjacent changes appear as continuous blocks
 - **Context lines** shown without highlighting for reference
 
-## 🔧 Advanced Features
-
-### Consecutive Block Merging
-
-Unlike traditional diff tools that highlight individual words, zdiff intelligently merges adjacent changes:
-
-**Traditional approach:**
-```
-Some [lines] [will] [be] [changed]
-```
-
-**zdiff approach:**
-```
-Some [lines will be changed]
-```
-
-### Smart LaTeX Handling
-
-The tool compares LaTeX-like strings as plain text:
-- `\text`, `\tan`, `\times` are preserved as literal substrings in output
-- backslashes are not interpreted as control escapes during diffing
-- `\t` / `\n` remain literal two-character sequences unless your input file already contains real tab/newline characters
-
-### Word Boundary Intelligence
-
-Changes are expanded to complete word boundaries to avoid fragmented highlighting:
-```
-# Avoids: He[llo wo]rld
-# Shows:  [Hello world]
-```
-
 ## 🛠 Integration Examples
 
 ### Shell Scripts
@@ -204,90 +174,10 @@ test: check-diff
     zdiff = !python /path/to/zdiff.py
 ```
 
-## 📊 Performance
-
-- **In-memory comparison** - Reads both input files fully before diffing
-- **Fast processing** - Character-level diff with word-boundary optimization
-- **Best for small/medium files** - Very large files may be slower due to full in-memory processing
-
-## 🔍 Tool Focus
-
-- `zdiff` prioritizes human-readable terminal output over minimal/raw diff output.
-- It combines line-level context with inline token-level highlights.
-- It includes side-by-side panels with line numbers for both files.
-- It preserves useful scriptability semantics via stable exit codes (`0/1/2`).
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Colors not showing:**
-```bash
-# Try with explicit color support
-python zdiff.py file1.txt file2.txt
-```
-
-**File encoding errors:**
-- zdiff automatically tries UTF-8 first, then falls back to latin-1
-- Most text files should work without issues
-
-**Large file performance:**
-- For very large files, consider using standard tools first
-- zdiff is optimized for readability over raw speed
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Development Setup
-
-```bash
-git clone https://github.com/example/zdiff.git
-cd zdiff
-python -m pytest tests/  # Run tests (if available)
-```
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Acknowledgments
-
-- Inspired by git diff and GNU diff
-- Built with Python's excellent `difflib` module
-- Color scheme inspired by professional IDE themes
-- Special thanks to the open-source community
-
-## 📞 Support
-
-- **Author:** Zhiyuan Yao (zhiyuan.yao@icloud.com)
-- **Institution:** Lanzhou Center for Theoretical Physics, Lanzhou University
-- **Issues:** [GitHub Issues](https://github.com/example/zdiff/issues)
-- **Documentation:** This README and inline help (`--help`)
-
-## 🔄 Version History
-
-### v1.1.0 (2026-02-21)
-- Side-by-side mode (`-s`) with dual line-number panels
-- Improved word-level highlighting behavior across mixed insert/delete/replace cases
-- Refined whitespace-only and boundary-aware highlight rendering
-- Updated documentation and demo assets
-
-### v1.0.0 (2025-08-08)
-- Initial release
-- Git-style diff output
-- Consecutive block merging
-- Professional color scheme
-- LaTeX-friendly literal text comparison
-- Word-boundary-aware highlighting
-- Context control
+**Made with ❤️ for developers who appreciate clean, readable diffs.**
 
 ---
-
-**Made with ❤️ for developers who appreciate clean, readable diffs.**
