@@ -1,0 +1,20 @@
+Minimal Review Corpus - new
+[A] Modification
+Mod 1: LaTeX \text{distance} = v \times t.
+Mod 2: function_call(new_value, stable_key, trailing_flag=true)
+[B] Mixed word drift (insert/delete/modify)
+Drift 1: parser keeps precise token boundaries for inline comparison and review.
+Drift 2: remove silent marker now.
+Drift 3: route=/api/v2/items?expand=true&limit=50&sort=desc.
+Drift 4: alpha gamma delta extra epsilon eta theta iota.
+[C] Pure line operations
+Line insert only: this line appears only in new.
+Shared anchor: keep me for context.
+[D] Format + unicode
+Whitespace: key = [  ]
+Tabs: colA  colB	colC
+Unicode: 状态=稳定，版本=乙，区域=西区。
+Emoji: deployment🙂stage-B completed with note-new.
+[E] Overflow
+Overflow: NEW::segment::bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+Tail marker: end-new

@@ -1,0 +1,13 @@
+Header: zdiff feature demo
+LaTeX: \text{speed} = v \times t
+MergeMe: alpha,beta
+Whitespace block: [   ]
+Delete me: legacy line
+Shared A
+Shared B
+Shared C
+Shared D
+Shared E
+Shared F
+Shared G
+Tail: keep context

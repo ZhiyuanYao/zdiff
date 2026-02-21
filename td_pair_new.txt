@@ -1,0 +1,6 @@
+Start
+Insert-only line: introduced in new file
+Wide chars case: 状态=稳定，模块=核心，版本=乙，区域=西区。
+Emoji case: deployment🙂stage-B completed with note-new.
+Overflow case: NEW::segment::bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+End

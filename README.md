@@ -16,6 +16,7 @@ A professional diff tool that provides git-style output with intelligent block-l
 - **📝 Smart LaTeX preservation** - Intelligent handling of LaTeX commands and escape sequences
 - **📏 Word-boundary awareness** - Clean highlighting without character fragmentation
 - **⚙️ Customizable context** - Control number of context lines displayed
+- **🪟 Side-by-side mode** - Compare file1 (left) and file2 (right) with line numbers in both panels
 - **🚫 No-color support** - Disable colors for piping or unsupported terminals
 - **✅ Standard exit codes** - Proper exit codes for scripting integration
 
@@ -63,12 +64,16 @@ python zdiff.py --no-color file1.txt file2.txt
 # Custom context lines (default: 3)
 python zdiff.py --context 5 file1.txt file2.txt
 python zdiff.py -c 5 file1.txt file2.txt
+
+# Side-by-side layout (left: file1, right: file2)
+python zdiff.py --side-by-side file1.txt file2.txt
+python zdiff.py -s file1.txt file2.txt
 ```
 
 ### Full Command Reference
 
 ```
-usage: zdiff.py [-h] [--no-color] [--context CONTEXT] file1 file2
+usage: zdiff.py [-h] [--no-color] [--context CONTEXT] [--side-by-side] file1 file2
 
 zdiff - Advanced Text Diff Tool with Git-Style Output
 
@@ -84,6 +89,7 @@ options:
   --no-color            Disable colored output
   --context CONTEXT, -c CONTEXT
                         Number of context lines to show (default: 3)
+  --side-by-side, -s    Show diff in side-by-side panels with line numbers
 ```
 
 ## 🎨 Output Examples

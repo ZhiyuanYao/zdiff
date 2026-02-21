@@ -1,0 +1,3 @@
+Drift 4: alpha gamma delta extra epsilon eta theta iota.
+Drift 4b: alpha gamma delta extra epsilon eta theta.
+Midword: w1 w2 n5 w3 w4 n24 w5 w6 w7 w8 r34 w10.

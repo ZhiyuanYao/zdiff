@@ -1,0 +1,3 @@
+Emoji case: deployment🙂stage-B completed with note-new.
+Replace block line 1: new phrase one
+LaTeX formula: \text{distance} = v \times t
